@@ -1,4 +1,13 @@
+## coverage
+
+在优化访问性能时，除了充分利用浏览器缓存之外，还需要涉及一个性能指标：coverage rate（覆盖率）
+
+可以在Chrome浏览器的控制台中按：ctrl  + shift + p，查找coverage，打开覆盖率面板
+
+开始录制后刷新网页，即可看到每个js文件的覆盖率，以及总的覆盖率
+
 ## 动态导入 (懒加载)
+想提高覆盖率，需要尽可能多的使用动态导入，也就是懒加载功能，将一切能使用懒加载的地方都是用懒加载，这样可以大大提高覆盖率
 
 webpack4默认是允许import语法动态导入的，但是需要babel的插件支持，最新版babel的插件包为：`@babel/plugin-syntax-dynamic-import`，以前老版本不是`@babel`开头，已经无法使用，需要注意
 
@@ -40,25 +49,7 @@ webpack4默认是允许import语法动态导入的，但是需要babel的插件�
      }
    }
    ```
-### Prefetching和Preloading
 
-在优化访问性能时，除了充分利用浏览器缓存之外，还需要涉及一个性能指标：coverage rate（覆盖率）
-
-可以在Chrome浏览器的控制台中按：ctrl  + shift + p，查找coverage，打开覆盖率面板
-
-开始录制后刷新网页，即可看到每个js文件的覆盖率，以及总的覆盖率
-
-想提高覆盖率，需要尽可能多的使用动态导入，也就是懒加载功能，将一切能使用懒加载的地方都是用懒加载，这样可以大大提高覆盖率
-
-但有时候使用懒加载会影响用户体验，所以可以在懒加载时使用魔法注释：Prefetching，是指在首页资源加载完毕后，空闲时间时，将动态导入的资源加载进来，这样即可以提高首屏加载速度，也可以解决懒加载可能会影响用户体验的问题，一举两得！
-
-```js
-function getComponent() {
-  return import(/* webpackPrefetch: true */ 'jquery').then(({ default: $ }) => {
-    return $('<div></div>').html('我是main')
-  })
-}
-```
 ## nginx配置浏览器缓存
 
 可以利用服务器缓存实现第一次加载资源，第二次从缓存中取出就不需要再次请求
@@ -68,7 +59,13 @@ location ~.*\.(js|css|html|png|jpg)$
 {
     expires 3d;
 }
+
 ````
+
+- expires    3d;　　//表示缓存3天
+- expires    3h;　　//表示缓存3小时
+- expires    max;　　//表示缓存10年
+- expires    -1;　　//表示永远过期。
 
 ## 浏览器缓存
 

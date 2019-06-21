@@ -5,11 +5,6 @@ module.exports = {
         index: "./src/index.js",
         main: "./src/main.js",
     },
-    optimization: {
-        splitChunks: {
-            chunks: 'all'
-        }
-    },
     output: {
         path: path.join(__dirname, 'dist'),
         filename: '[name].bundle.js'
