@@ -9,7 +9,7 @@
 
 function getComponent() {
     return import(/* webpackPrefetch: true */ 'jquery').then(({ default: $ }) => {
-        return $('<div></div>').html('我是main')
+        return $('<div></div>').html('老孟不是大叔')
     })
 }
 

@@ -7,7 +7,7 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: '[name].bundle.js'
+        filename: '[name].[contenthash:8].bundle.js'
     },
     plugins: [new HtmlWebpackPlugin({
         filename: 'index.html',
