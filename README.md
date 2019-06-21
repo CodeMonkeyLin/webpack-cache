@@ -49,10 +49,15 @@ webpack4默认是允许import语法动态导入的，但是需要babel的插件�
      }
    }
    ```
+
 ### Prefetching
 但有时候使用懒加载会影响用户体验，所以可以在懒加载时使用魔法注释：Prefetching，是指在首页资源加载完毕后，空闲时间时，将动态导入的资源加载进来，这样即可以提高首屏加载速度，也可以解决懒加载可能会影响用户体验的问题
 
-> 相当于<link rel="prefetch" href="*.chunk.js">
+> 相当于
+```html
+<link rel="prefetch" href="*.chunk.js">
+```
+
 
 
 ## nginx配置浏览器缓存
