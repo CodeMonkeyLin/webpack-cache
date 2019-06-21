@@ -58,8 +58,6 @@ webpack4默认是允许import语法动态导入的，但是需要babel的插件�
 <link rel="prefetch" href="*.chunk.js">
 ```
 
-
-
 ## nginx配置浏览器缓存
 
 可以利用服务器缓存实现第一次加载资源，第二次从缓存中取出就不需要再次请求
